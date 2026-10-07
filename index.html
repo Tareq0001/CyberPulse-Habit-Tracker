@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberPulse | متتبع العادات اليومية البسيط</title>
+  <meta name="description" content="تطبيق ويب خفيف وأنيق لتتبع العادات اليومية مع حساب سلاسل الالتزام والنشاط الشهري">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2308110c'/><path d='M30 50 L45 65 L75 35' fill='none' stroke='%2300ff88' stroke-width='10' stroke-linecap='round'/></svg>">
+</head>
+<body>
+  <div class="scanlines-overlay"></div>
+
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-text">
+          <h1>CyberPulse <span class="badge">HABITS</span></h1>
+          <p class="tagline">متتبع العادات والإنتاجية الشخصية الخفيف</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="btn-export" class="btn btn-outline" title="تصدير نسخة احتياطية">💾 تصدير</button>
+        <button id="btn-lang" class="btn btn-outline">English</button>
+      </div>
+    </header>
+
+    <!-- Overview Stats HUD -->
+    <section class="hud-grid">
+      <div class="hud-card">
+        <span class="hud-title">إجمالي العادات النشطة</span>
+        <span class="hud-val" id="total-habits-val">0</span>
+        <span class="hud-sub">عادات تحت المتابعة</span>
+      </div>
+      <div class="hud-card">
+        <span class="hud-title">إنجاز اليوم</span>
+        <span class="hud-val" id="today-completion-val">0%</span>
+        <div class="progress-bar">
+          <div class="progress-fill" id="today-progress-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+      <div class="hud-card">
+        <span class="hud-title">أطول سلسلة التزام</span>
+        <span class="hud-val" id="best-streak-val">🔥 0 يوم</span>
+        <span class="hud-sub">استمر في التقدم!</span>
+      </div>
+    </section>
+
+    <!-- Add Habit Card -->
+    <section class="add-habit-card">
+      <form id="add-habit-form" class="add-form">
+        <input type="text" id="habit-name-input" placeholder="اسم العادة الجديدة (مثال: قراءة 20 صفحة، رياضة 30 دقيقة...)" required autocomplete="off">
+        <select id="habit-cat-input">
+          <option value="💡 تعلم وتطوير">💡 تعلم وتطوير</option>
+          <option value="🏃 صحة ولياقة">🏃 صحة ولياقة</option>
+          <option value="💻 برمجة وعمل">💻 برمجة وعمل</option>
+          <option value="🧘 تركيز وروحانية">🧘 تركيز وروحانية</option>
+        </select>
+        <button type="submit" class="btn btn-primary">+ إضافة العادة</button>
+      </form>
+    </section>
+
+    <!-- Habits List -->
+    <section class="habits-section">
+      <div class="section-header">
+        <h2>عادات اليوم (<span id="current-date-display"></span>)</h2>
+        <span class="tip-text">انقر على المربع لتسجيل إنجاز اليوم</span>
+      </div>
+      <div id="habits-list" class="habits-list">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+    <!-- Monthly Activity Matrix (GitHub Style) -->
+    <section class="activity-section">
+      <div class="section-header">
+        <h2>خريطة النشاط والالتزام (آخر 28 يوماً)</h2>
+        <div class="legend">
+          <span>أقل</span>
+          <span class="cell lvl-0"></span>
+          <span class="cell lvl-1"></span>
+          <span class="cell lvl-2"></span>
+          <span class="cell lvl-3"></span>
+          <span>أكثر</span>
+        </div>
+      </div>
+      <div class="activity-grid" id="activity-grid"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>CyberPulse Habit Tracker &bull; تطوير <strong>أ. طارق ابوعشي</strong> &bull; حفظ محلي 100% في المتصفح</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
